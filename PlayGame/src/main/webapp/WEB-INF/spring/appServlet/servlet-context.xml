@@ -58,23 +58,7 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
-	<beans:bean class="org.mybatis.spring.SqlSessionFactoryBean" id="factory">
-		<beans:property name="dataSource" ref="ds" />
-		<beans:property name="mapperLocations">
-			<beans:list>
-				<beans:value>/WEB-INF/Mapper/*-mapper.xml</beans:value>
-			</beans:list>
-		</beans:property>
-	</beans:bean>
-	<beans:bean class="org.mybatis.spring.SqlSessionTemplate">
-		<beans:constructor-arg name="sqlSessionFactory" ref="factory" />
-	</beans:bean>
 	
-	<beans:bean
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
-		id="transactionManager">
-		<beans:property name="dataSource" ref="ds" />
-	</beans:bean>
 	<!-- about converter -->
 	<beans:bean class="com.fasterxml.jackson.databind.ObjectMapper" />
 	<beans:bean class="java.text.SimpleDateFormat">
