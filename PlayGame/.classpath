@@ -25,6 +25,6 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/yacle/Documents/playgame/ojdbc8.jar"/>
+	<classpathentry kind="lib" path="D:/PROJECT/git_playgame/PlayGame/src/main/webapp/resources/ojdbc8.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

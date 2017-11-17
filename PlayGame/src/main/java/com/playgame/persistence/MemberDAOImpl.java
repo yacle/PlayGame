@@ -12,8 +12,7 @@ private  SqlSessionTemplate session;
 	
 	@Override
 	public void create(MemberVO vo) throws Exception {
-		// TODO Auto-generated method stub
-		
+		session.insert("member.create", vo);
 	}
 
 	@Override
