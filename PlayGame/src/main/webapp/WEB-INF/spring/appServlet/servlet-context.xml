@@ -33,6 +33,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.playgame.web" />
+	<context:component-scan base-package="com.playgame.controller" />
 	
 	<beans:bean class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<beans:property name="host" value="smtp.gmail.com"/>

@@ -1,11 +1,11 @@
 package com.playgame.persistence;
 
 import javax.inject.Inject;
-
 import org.mybatis.spring.SqlSessionTemplate;
-
+import org.springframework.stereotype.Repository;
 import com.playgame.domain.MemberVO;
 
+@Repository
 public class MemberDAOImpl implements MemberDAO{
 @Inject
 private  SqlSessionTemplate session;
@@ -17,19 +17,16 @@ private  SqlSessionTemplate session;
 
 	@Override
 	public MemberVO read(MemberVO vo) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return session.selectOne("member.read", vo);
 	}
 
 	@Override
 	public void update(MemberVO vo) throws Exception {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void delete(MemberVO vo) throws Exception {
-		// TODO Auto-generated method stub
 		
 	}
 
