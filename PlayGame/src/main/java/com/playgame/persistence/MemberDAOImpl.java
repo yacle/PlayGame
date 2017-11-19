@@ -30,4 +30,8 @@ private  SqlSessionTemplate session;
 		
 	}
 
+	@Override
+	public MemberVO checkId(String id) throws Exception {
+		return session.selectOne("member.read", id);
+	}
 }

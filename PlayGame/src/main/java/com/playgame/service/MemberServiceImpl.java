@@ -27,10 +27,15 @@ public class MemberServiceImpl implements MemberService{
 	public void update(MemberVO vo) throws Exception {
 		dao.update(vo);
 	}
-
+	
 	@Override
 	public void delete(MemberVO vo) throws Exception {
 		dao.delete(vo);
+	}
+	
+	@Override
+	public MemberVO checkId(String id) throws Exception{
+		return dao.checkId(id);
 	}
 
 }
