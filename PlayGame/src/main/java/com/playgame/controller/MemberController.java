@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,22 +37,22 @@ public class MemberController {
 	@Inject
 	JavaMailSender sender;
 	
-	
+	// GET join
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public ModelAndView joinGET()throws Exception{
 		ModelAndView mav = new ModelAndView("temp");
 		mav.addObject("section", "member/join");
 		return mav;
 	}
-	
+	// POST join
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public void joinPOST()throws Exception{
-		
+	public String joinPOST()throws Exception{
+		return "redirect:/index";
 	}
-	
-	@RequestMapping("/idcheck")
+	// ID 중복체크
+	@RequestMapping(value="/duplication", method = RequestMethod.POST)
 	@ResponseBody
-	public String idcheckHandle(@RequestParam Map map) throws Exception {
+	public String idcheckHandle(@RequestBody Map map) throws Exception {
 		MemberVO vo = service.checkId((String)map.get("id"));
 		if(vo != null){
 			return "ok";
@@ -59,10 +60,10 @@ public class MemberController {
 			return "no";
 		}
 	} 
-	
-	@RequestMapping("/emailReg")
+	// Email 인증코드 발송
+	@RequestMapping(value="/regEmail", method = RequestMethod.POST)
 	@ResponseBody
-	public void emailRegSend(@RequestParam Map map, HttpSession session) throws AddressException, MessagingException{
+	public void emailRegSend(@RequestBody Map map, HttpSession session) throws AddressException, MessagingException{
 		String email = (String) map.get("email");
 		MimeMessage msg = sender.createMimeMessage();
 		msg.setRecipient(RecipientType.TO, new InternetAddress(email));
@@ -74,10 +75,10 @@ public class MemberController {
 		sender.send(msg);
 		session.setAttribute("uuid", code);
 	}
-	
-	@RequestMapping("/regCode")
+	// 인증코드 확인
+	@RequestMapping(value="/regCode", method = RequestMethod.POST)
 	@ResponseBody
-	public String regCodeHandle(@RequestParam Map map, HttpSession session) throws Exception {
+	public String regCodeHandle(@RequestBody Map map, HttpSession session) throws Exception {
 		String regCode = (String)map.get("regCode");
 		String uuid = (String)session.getAttribute("uuid");
 		if(regCode.equals(uuid)) {
@@ -85,5 +86,17 @@ public class MemberController {
 		}else {
 			return "false";
 		}
+	}
+	// GET 회원탈퇴
+	@RequestMapping(value="/withdraw", method = RequestMethod.GET)
+	public ModelAndView withdrawGET()throws Exception {
+		ModelAndView mav = new ModelAndView("temp");
+		mav.addObject("section", "member/withdraw");
+		return mav;
+	}
+	// POST 회원탈퇴
+	@RequestMapping(value = "/withdraw", method = RequestMethod.POST)
+	public String withdrawPOST()throws Exception{
+		return "redirect:/index";
 	}
 }

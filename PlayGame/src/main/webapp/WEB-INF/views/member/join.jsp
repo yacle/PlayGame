@@ -56,7 +56,7 @@
 
 <script>
 
-// 빈칸 X
+// 필수입력항목 체크
 $(document).ready(function(){
 	$("#join").click(function(){
 		if($("#id").val().length==0){alert("ID를 입력하세요"); $("#id").focus(); return false;}
@@ -74,7 +74,7 @@ $("#id").keyup(function(){
 		$.ajax({
 			"type":"post",
 			"async":false,
-			"url":"/member/idcheck",
+			"url":"/member/duplication",
 			"data":{
 				"id":$("#id").val()
 			}
@@ -120,7 +120,7 @@ $("#emailReg").click(function(){
 	$.ajax({
 		"type":"post",
 		"async":false,
-		"url":"/member/emailReg",
+		"url":"/member/regEmail",
 		"data":{
 			"email":$("#email").val()
 		}
