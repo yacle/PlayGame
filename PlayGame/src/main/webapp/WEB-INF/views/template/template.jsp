@@ -14,28 +14,34 @@
 <title><tiles:getAsString name="title" />-${auth }</title>
 </head>
 <body>
-<div class="container">
-	<header>
-		<tiles:insertAttribute name="header" />
-	</header>
-	<c:choose>
-		<c:when test="${empty auth_id}">
-			<nav>
-				<tiles:insertAttribute name="nav" />
-			</nav>
-		</c:when>
-		<c:otherwise>
-			<nav>
-				<tiles:insertAttribute name="nav_in" />
-			</nav>
-		</c:otherwise>
-	</c:choose>
+<div class="container-fluid" style="background-color:#2d2d30">
+	<div class="container"> 
+		<header>
+			<tiles:insertAttribute name="header" />
+		</header>
+		<c:choose>
+			<c:when test="${empty auth_id}">
+				<nav>
+					<tiles:insertAttribute name="nav" />
+				</nav>
+			</c:when>
+			<c:otherwise>
+				<nav>
+					<tiles:insertAttribute name="nav_auth" />
+				</nav>
+			</c:otherwise>
+		</c:choose>
+	</div>
+</div>
+<div class="container"> 
 	<section style="min-height: 70%;">
 		<tiles:insertAttribute name="section" />
 	</section>
+</div>
+<div class="container-fluid" style="background-color:#2d2d30">
 	<footer>
 		<tiles:insertAttribute name="footer" />
 	</footer>
-	</div>
+</div>
 </body>
 </html>

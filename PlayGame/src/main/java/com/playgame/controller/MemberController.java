@@ -99,4 +99,20 @@ public class MemberController {
 	public String withdrawPOST()throws Exception{
 		return "redirect:/index";
 	}
+	// GET ID 찾기
+	@RequestMapping(value = "/searchId", method = RequestMethod.GET)
+	public ModelAndView searchIdGET()throws Exception{
+		ModelAndView mav = new ModelAndView("temp");
+		mav.addObject("section", "member/search_id");
+		return mav;
+	}
+	// GET 패스워드 찾기
+		@RequestMapping(value = "/searchPW", method = RequestMethod.GET)
+		public ModelAndView searchPWGET()throws Exception{
+			ModelAndView mav = new ModelAndView("temp");
+			mav.addObject("section", "member/search_pw");
+			return mav;
+		}
+	
+	
 }

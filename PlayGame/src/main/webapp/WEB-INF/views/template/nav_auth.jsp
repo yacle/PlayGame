@@ -25,7 +25,9 @@
       }
       .row.content {height:auto;} 
     }
-
+    a{
+    	color: white;
+    }
   </style>
 </head>
 <body>
@@ -33,22 +35,16 @@
 <nav class="navbar navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-		<a class="navbar-brand" href="/">HOME</a>
+      <a class="navbar-brand" href="/">HOME</a>
     </div>
-	<form class="navbar-form navbar-left">
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Search">
-		</div>
-		<button type="submit" class="btn btn-default">검색</button>
-	</form>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">공지사항</a></li>
         <li><a href="#">장바구니</a></li>
         <li><a href="#">주문조회</a></li>
         <li><a href="#">고객센터</a></li>
-        <li><a href="#">마이페이지</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Join</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>
