@@ -33,6 +33,14 @@
 <nav class="navbar navbar">
   <div class="container-fluid">
     <div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>  
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>                      
+		</button>
 		<a class="navbar-brand" href="/">HOME</a>
     </div>
 	<form class="navbar-form navbar-left">
@@ -43,7 +51,7 @@
 	</form>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">공지사항</a></li>
+        <li><a href="/master/notice">공지사항</a></li>
         <li><a href="#">장바구니</a></li>
         <li><a href="#">주문조회</a></li>
         <li><a href="#">고객센터</a></li>

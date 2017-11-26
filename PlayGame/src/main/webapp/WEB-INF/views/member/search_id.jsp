@@ -3,6 +3,7 @@
 
 <div class="container" style="margin-left:270px">
 <h2>아이디 찾기</h2><br/>
+<h4>등록된 이름과 이메일을 입력하십시요.</h4>
 	<div class="form-group">
 		<label for="name">이름:</label>
 		<input type="text" class="form-control" name="name" placeholder="Enter Name" style="width:50%">

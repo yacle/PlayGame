@@ -14,6 +14,6 @@
 	</div>
 	<div align="right" style="width:50%; color: blue">
 		<a href="/member/searchId" style="color: blue">아이디 찾기</a><br/><br/>
-		<button type="button" class="btn btn-default">찾기</button>
+		<button type="button" class="btn btn-default">발급</button>
 	</div>
 </div>
