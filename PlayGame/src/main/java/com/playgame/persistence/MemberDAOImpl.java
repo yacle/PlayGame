@@ -21,17 +21,12 @@ private  SqlSessionTemplate session;
 	}
 
 	@Override
-	public void update(MemberVO vo) throws Exception {
-		
+	public int update(MemberVO vo) throws Exception {
+		return session.update("member.update", vo);
 	}
 
 	@Override
-	public void delete(MemberVO vo) throws Exception {
-		
-	}
-
-	@Override
-	public MemberVO checkId(String id) throws Exception {
-		return session.selectOne("member.read", id);
+	public int delete(MemberVO vo) throws Exception {
+		return session.delete("member.delete", vo);
 	}
 }

@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 	<insert id="create" >
-		insert into member values(#{id}, #{password}, #{email, jdbcType=VARCHAR}, #{name}, #{pwd_hint}, #{address}, 0, #{phone}, #{sms})
+		insert into member values(#{id}, #{name}, #{password}, #{email}, #{pwd_hint})
 	</insert> 
 		
 	<select id="read" resultType="com.playgame.domain.MemberVO">
@@ -14,7 +14,7 @@
 		update member set log_cnt=log_cnt+1 where id=#{id}
 	</update>
 	<delete id="delete">
-		delete from freeboard where id=#{id}
+		delete from member where id=#{id} and password=#{password}
 	</delete>
 	
 </mapper>

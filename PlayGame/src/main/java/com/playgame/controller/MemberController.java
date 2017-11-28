@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,15 +47,16 @@ public class MemberController {
 	}
 	// POST join
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String joinPOST()throws Exception{
+	public String joinPOST(MemberVO vo)throws Exception{
+		service.regist(vo);
 		return "redirect:/index";
 	}
 	// ID Áßº¹Ã¼Å©
 	@RequestMapping(value="/duplication", method = RequestMethod.POST)
 	@ResponseBody
-	public String idcheckHandle(@RequestBody Map map) throws Exception {
-		MemberVO vo = service.checkId((String)map.get("id"));
-		if(vo != null){
+	public String idcheckHandle(@RequestBody MemberVO vo) throws Exception {
+		MemberVO rvo = service.read(vo);
+		if(rvo != null){
 			return "ok";
 		}else {
 			return "no";
@@ -96,8 +98,10 @@ public class MemberController {
 	}
 	// POST È¸¿øÅ»Åð
 	@RequestMapping(value = "/withdraw", method = RequestMethod.POST)
-	public String withdrawPOST()throws Exception{
-		return "redirect:/index";
+	@ResponseBody
+	public int withdrawPOST(MemberVO vo)throws Exception{
+		int result = service.delete(vo);
+		return result;
 	}
 	// GET ID Ã£±â
 	@RequestMapping(value = "/searchId", method = RequestMethod.GET)
