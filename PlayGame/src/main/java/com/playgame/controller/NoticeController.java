@@ -18,8 +18,8 @@ import com.playgame.service.NoticeService;
 @Controller
 @RequestMapping("/notice")
 public class NoticeController {
-@Inject 
-NoticeService service;
+	@Inject 
+	NoticeService service;
 
 	@RequestMapping(value = "/write_notice", method = RequestMethod.GET)
 	public ModelAndView createNoticeGETHandle() {

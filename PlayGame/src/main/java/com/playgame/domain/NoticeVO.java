@@ -8,6 +8,7 @@ public class NoticeVO {
 	private String writer;
 	private String content;
 	private Date add_date;
+	private Integer view_count;
 	
 	public String getNo() {
 		return no;
@@ -39,10 +40,16 @@ public class NoticeVO {
 	public void setAdd_date(Date add_date) {
 		this.add_date = add_date;
 	}
+	public Integer getView_count() {
+		return view_count;
+	}
+	public void setView_count(Integer view_count) {
+		this.view_count = view_count;
+	}
 	@Override
 	public String toString() {
 		return "NoticeVO [no=" + no + ", title=" + title + ", writer=" + writer + ", content=" + content + ", add_date="
-				+ add_date + "]";
+				+ add_date + ", view_count=" + view_count +"]";
 	}
 	
 }

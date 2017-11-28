@@ -20,9 +20,9 @@
 	<context:property-placeholder location="classpath:/jdbc.properties" />
 	<bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="ds">
 		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
-		<property name="user" value="used" />
-		<property name="password" value="used" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@playgame.cd53pfvifupw.us-east-2.rds.amazonaws.com:1521:orcl" />
+		<property name="user" value="yacle7465" />
+		<property name="password" value="Park5404" />
 	</bean>	
 	
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="factory">
