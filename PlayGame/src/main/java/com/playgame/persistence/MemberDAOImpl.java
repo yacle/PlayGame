@@ -13,6 +13,7 @@ private  SqlSessionTemplate session;
 	@Override
 	public void create(MemberVO vo) throws Exception {
 		session.insert("member.create", vo);
+		session.insert("member.info", vo);
 	}
 
 	@Override
@@ -28,5 +29,10 @@ private  SqlSessionTemplate session;
 	@Override
 	public int delete(MemberVO vo) throws Exception {
 		return session.delete("member.delete", vo);
+	}
+
+	@Override
+	public int read_id(MemberVO vo) throws Exception {
+		return session.selectOne("member.read_id", vo);
 	}
 }

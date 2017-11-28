@@ -52,11 +52,9 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/master/notice">공지사항</a></li>
-        <li><a href="#">장바구니</a></li>
-        <li><a href="#">주문조회</a></li>
-        <li><a href="#">고객센터</a></li>
-        <li><a href="#">마이페이지</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+        <li><a href="/qna">고객센터</a></li>
+        <li><a href="/member/join"><span class="glyphicon glyphicon-log-in"></span> Join</a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>

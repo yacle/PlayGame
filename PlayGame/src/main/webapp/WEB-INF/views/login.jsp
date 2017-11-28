@@ -14,7 +14,25 @@
 		</div>
 		<div align="right" style="width:50%;">
 		<a href="/member/searchId" style="color: blue">아이디 찾기</a> | <a href="/member/searchPW" style="color: blue">비밀번호 찾기</a><br/><br/>
-		<button type="submit" class="btn btn-default">Submit</button>
+		<button type="button" id="submit" class="btn btn-default">Submit</button>
 		</div>
 	</form>
 </div>
+
+<script>
+$("#submit").click(function(){
+	$.ajax({
+		type:"post",
+		async:false,
+		url:"/login",
+		data:$("form").serialize(),
+		success:function(data){
+			if(data=='ok'){
+				location.replace("/");
+			}else{
+				window.alert("아이디와 패스워드를 확인해주세요");
+			}
+		}
+	})
+})
+</script>

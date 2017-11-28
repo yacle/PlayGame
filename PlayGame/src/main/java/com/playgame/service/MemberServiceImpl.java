@@ -32,4 +32,9 @@ public class MemberServiceImpl implements MemberService{
 	public int delete(MemberVO vo) throws Exception {
 		return dao.delete(vo);
 	}
+
+	@Override
+	public int read_id(MemberVO vo) throws Exception {
+		return dao.read_id(vo);
+	}
 }

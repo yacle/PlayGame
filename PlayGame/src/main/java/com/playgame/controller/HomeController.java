@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.playgame.domain.MemberVO;
@@ -19,7 +20,7 @@ public class HomeController {
 	MemberService service;
 	
 	// GET home
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
 	public ModelAndView homeGET()throws Exception{
 		ModelAndView mav = new ModelAndView("temp");
 		mav.addObject("section", "home");
@@ -34,13 +35,20 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@ResponseBody
 	public String loginPOST(MemberVO vo, HttpSession session, HttpServletResponse response)throws Exception{
 		MemberVO rvo = service.read(vo);
 		if(rvo != null) {
-			session.setAttribute("auth_id", vo.getId());
-			return "redirect:/";
+			session.setAttribute("auth_id", rvo.getId());
+			return "ok";
 		}else {
-			return "redirect:/login";
+			return "no";
 		}
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logoutGET(HttpSession session)throws Exception{
+		session.removeAttribute("auth_id");
+		return "redirect:/";
 	}
 }

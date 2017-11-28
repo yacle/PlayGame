@@ -49,23 +49,18 @@ public class MemberController {
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String joinPOST(MemberVO vo)throws Exception{
 		service.regist(vo);
-		return "redirect:/index";
+		return "redirect:/home";
 	}
 	// ID 중복체크
-	@RequestMapping(value="/duplication", method = RequestMethod.POST)
+	@RequestMapping(value="/duplication", method = {RequestMethod.POST, RequestMethod.GET})
 	@ResponseBody
-	public String idcheckHandle(@RequestBody MemberVO vo) throws Exception {
-		MemberVO rvo = service.read(vo);
-		if(rvo != null){
-			return "ok";
-		}else {
-			return "no";
-		}
+	public int idcheckHandle(MemberVO vo) throws Exception {
+		return service.read_id(vo);
 	} 
 	// Email 인증코드 발송
-	@RequestMapping(value="/regEmail", method = RequestMethod.POST)
+	@RequestMapping(value="/regEmail", method = {RequestMethod.POST, RequestMethod.GET})
 	@ResponseBody
-	public void emailRegSend(@RequestBody Map map, HttpSession session) throws AddressException, MessagingException{
+	public void emailRegSend(@RequestParam Map map, HttpSession session) throws AddressException, MessagingException{
 		String email = (String) map.get("email");
 		MimeMessage msg = sender.createMimeMessage();
 		msg.setRecipient(RecipientType.TO, new InternetAddress(email));
@@ -78,9 +73,9 @@ public class MemberController {
 		session.setAttribute("uuid", code);
 	}
 	// 인증코드 확인
-	@RequestMapping(value="/regCode", method = RequestMethod.POST)
+	@RequestMapping(value="/regCode", method = {RequestMethod.POST, RequestMethod.GET})
 	@ResponseBody
-	public String regCodeHandle(@RequestBody Map map, HttpSession session) throws Exception {
+	public String regCodeHandle(@RequestParam Map map, HttpSession session) throws Exception {
 		String regCode = (String)map.get("regCode");
 		String uuid = (String)session.getAttribute("uuid");
 		if(regCode.equals(uuid)) {

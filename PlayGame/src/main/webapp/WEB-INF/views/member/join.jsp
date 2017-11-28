@@ -9,28 +9,28 @@
 			<label class="control-label col-sm-2" for="id">*ID : </label>
 			<div class="col-sm-5">
 				<input type="text" class="form-control" id="id" placeholder="Enter ID" name="id"> 
-				<span id="checkId"></span>
+				<span id="checkId"><button type="button" id="dbchkid">중복체크</button></span>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="pw">*Password : </label>
 			<div class="col-sm-5">
-				<input type="password" class="form-control" id="pw" placeholder="Enter Password" name="pw">
+				<input type="password" class="form-control" id="pw" placeholder="Enter Password" name="password">
 				<input type="password" class="form-control" id="pw2" placeholder="Reconfirm Password" name="pw2">
 				<span id="checkPass"></span>
 			</div>
 		</div>
 		
 		<div class="form-group">
-			<label class="control-label col-sm-2" for="birth">Birth : </label>
+			<label class="control-label col-sm-2" for="pwd_hint">*비밀번호 힌트 : </label>
 			<div class="col-sm-5">
-				<input type="date" class="form-control" id="birth" name="birth">
+				<input type="text" class="form-control" id="pwd_hint" placeholder="비밀번호 힌트 10자 이내" name="pwd_hint">
 			</div>
 		</div>
 		
 		<div class="form-group">
-			<label class="control-label col-sm-2" for="name">*Name : </label>
+			<label class="control-label col-sm-2" for="name">Name : </label>
 			<div class="col-sm-5">
 				<input type="text" class="form-control" id="name" name="name">
 			</div>
@@ -39,9 +39,9 @@
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="email">*Email:</label>
 			<div class="col-sm-5">
-				<input type="email" class="form-control" id="email" value="${map.email}">
+				<input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
 				<button type="button" id="emailReg"><small>인증메일보내기</small></button>
-				<span id="codeInput"><input type="text" id="regCode" placeholder="Entet Code"></span>
+				<span id="codeInput"><input type="text" id="regCode" placeholder="Enter Code"></span>
 			</div>
 		</div>
 
@@ -60,15 +60,16 @@
 $(document).ready(function(){
 	$("#join").click(function(){
 		if($("#id").val().length==0){alert("ID를 입력하세요"); $("#id").focus(); return false;}
+		if($("#checkId").html()!='사용가능'){alert("ID 중복체크를 하세요"); $("#id").focus(); return false;}
 		if($("#pw").val().length==0){alert("비밀번호를 입력하세요"); $("#pw").focus(); return false;}
 		if($("#pw2").val().length==0){alert("비밀번호를 입력하세요"); $("#pw2").focus(); return false;}
 		if($("#email").val().length==0){alert("Email을 입력하세요"); $("#email").focus(); return false;}
-		if($("#trcheck").val().length==0){alert("이메일 인증이 완료되지 않았습니다."); $("#email").focus(); return false;}
+		if($("#codeInput").html()!="<b style=\"color:green\">인증완료</b>"){alert("이메일 인증이 완료되지 않았습니다."); $("#email").focus(); return false;}
 	})
 })
 
 //ID 중복확인
-$("#id").keyup(function(){
+$("#dbchkid").click(function(){
 	var i = $("#id").val();
 	if(i.length>4){
 		$.ajax({
@@ -80,9 +81,9 @@ $("#id").keyup(function(){
 			}
 		}).done(function(r){
 			if(r!=0){
-				$("#checkId").html("사용중인 아이디입니다. 다른 아이디를 입력하십시오");
+				window.alert("사용중인 아이디입니다.");
 			}else{
-				$("#checkId").html("사용가능한 아이디입니다.");
+				$("#checkId").html("사용가능");
 			}
 		})
 	}else{
@@ -105,7 +106,7 @@ $("#pw").keyup(function(){
 	}
 })
 // 비밀번호 재확인
-$("#pw2").onblur = function() {
+$("#pw2").keyup(function() {
 	var pass = $("#pw").val();
 	var pass2 = $("#pw2").val();
 	if (pass2 == pass) {
@@ -113,19 +114,23 @@ $("#pw2").onblur = function() {
 	} else {
 		$("#checkPass").html("<b style=\"color:red\">불일치</b>");
 	}
-}
+})
 
 // 이메일 인증 코드 전송
 $("#emailReg").click(function(){
 	$.ajax({
-		"type":"post",
-		"async":false,
-		"url":"/member/regEmail",
-		"data":{
+		type:"post",
+		async:false,
+		url:"/member/regEmail",
+		data:{
 			"email":$("#email").val()
+		},
+		success:function(){
+			window.alert("이메일로 인증코드를 발송하였습니다.");
+		},
+		error:function(){
+			window.alert("이메일 주소를 확인해주세요");
 		}
-	}).done(function(){
-		window.alert("인증코드를 발송하였습니다.")
 	})
 })
 // 인증코드 확인

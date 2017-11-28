@@ -1,13 +1,18 @@
 package com.playgame.domain;
 
 public class MemberInfoVO {
+	private String info_id;
 	private String address_main;
 	private String address_sub;
-	private Integer phone;
-	private String sms;
+	private Integer phone_num;
 	private Integer point;
 	private String coupon;
-	
+	public String getInfo_id() {
+		return info_id;
+	}
+	public void setInfo_id(String info_id) {
+		this.info_id = info_id;
+	}
 	public String getAddress_main() {
 		return address_main;
 	}
@@ -21,16 +26,10 @@ public class MemberInfoVO {
 		this.address_sub = address_sub;
 	}
 	public Integer getPhone() {
-		return phone;
+		return phone_num;
 	}
-	public void setPhone(Integer phone) {
-		this.phone = phone;
-	}
-	public String getSms() {
-		return sms;
-	}
-	public void setSms(String sms) {
-		this.sms = sms;
+	public void setPhone(Integer phone_num) {
+		this.phone_num = phone_num;
 	}
 	public Integer getPoint() {
 		return point;
@@ -46,7 +45,7 @@ public class MemberInfoVO {
 	}
 	@Override
 	public String toString() {
-		return "MemberInfoVO [address_main=" + address_main + ", address_sub=" + address_sub + ", phone=" + phone
-				+ ", sms=" + sms + ", point=" + point + ", coupon=" + coupon + "]";
+		return "MemberInfoVO [info_id="+info_id+"address_main=" + address_main + ", address_sub=" + address_sub + 
+				", phone_num=" + phone_num+ ", point=" + point + ", coupon=" + coupon + "]";
 	}
 }
