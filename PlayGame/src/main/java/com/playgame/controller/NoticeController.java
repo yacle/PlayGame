@@ -1,12 +1,12 @@
 package com.playgame.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,31 +24,32 @@ public class NoticeController {
 	@RequestMapping(value = "/write_notice", method = RequestMethod.GET)
 	public ModelAndView createNoticeGETHandle() {
 		ModelAndView mav = new ModelAndView("temp");
-		mav.addObject("section", "master/write_notice");
+		mav.addObject("section", "notice/write_notice");
 		return mav;
 	}
 	
 	@RequestMapping(value = "/write_notice", method = RequestMethod.POST)
 	public String createNoticePOSTHandle(NoticeVO vo) throws Exception {
 		service.regist(vo);
-		return "redirect:/master/notice";
+		return "redirect:/notice/list";
 	}
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView noticeListHandle() throws Exception{
 		List<NoticeVO> list = service.readList();
 		ModelAndView mav = new ModelAndView("temp");
-		mav.addObject("section", "master/notice");
+		mav.addObject("section", "notice/notice");
 		mav.addObject("list", list);
 		return mav;
 	}
 	
 	@RequestMapping(value = "/view/{no}", method = RequestMethod.GET)
 	public ModelAndView viewNoticeHandle(@PathVariable String no) throws Exception {
-//		NoticeVO vo = service.read(no);
+		Map map = service.read(no);
 		ModelAndView mav = new ModelAndView("temp");
-		mav.addObject("section", "master/view_notice");
-//		mav.addObject("list", vo);
+		mav.addObject("section", "notice/view_notice");
+		mav.addObject("vo", map.get("vo"));
+		mav.addObject("files", map.get("files"));
 		return mav;
 	}
 	

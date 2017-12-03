@@ -1,6 +1,7 @@
 package com.playgame.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -14,7 +15,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 	private  SqlSessionTemplate session;
 	@Override
 	public void create(NoticeVO vo) throws Exception {
-		session.insert("notice.creat", vo);
+		session.insert("notice.create", vo);
 	}
 
 	@Override
@@ -35,6 +36,17 @@ public class NoticeDAOImpl implements NoticeDAO {
 	@Override
 	public void delete(String no) throws Exception {
 		session.delete("notice.delete", no);
+	}
+
+	@Override
+	public void addFiles(NoticeVO vo) throws Exception {
+		session.insert("notice.addFiles", vo);
+		
+	}
+
+	@Override
+	public List<String> getFiles(String no) throws Exception {
+		return session.selectList("notice.getFiles", no);
 	}
 
 

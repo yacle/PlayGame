@@ -6,7 +6,9 @@ import com.playgame.domain.NoticeVO;
 
 public interface NoticeDAO {
 	public void create(NoticeVO vo)throws Exception;
+	public void addFiles(NoticeVO vo)throws Exception;
 	public NoticeVO read(String no)throws Exception;
+	public List<String> getFiles(String no)throws Exception;
 	public List<NoticeVO> readList()throws Exception;
 	public void update(NoticeVO vo)throws Exception;
 	public void delete(String no)throws Exception;

@@ -11,10 +11,9 @@ td{
 	<h2>공지사항</h2>
 </div>
 <!-- 관리자 글쓰기 버튼 --> 
-<button type="button" class="btn btn-default"><a href="/master/write_notice">글쓰기</a></button>
-<c:if test="${auth_level gt 9}">
+<c:if test="${auth_id eq 'yacle7465'}">
 	<div align="right">
-		<button type="button" class="btn btn-default"><a href="/master/write_notice">글쓰기</a></button>
+		<button type="button" class="btn btn-primary"><a href="/notice/write_notice">글쓰기</a></button>
 	</div>
 </c:if>
 <table class="table table-hover">
@@ -36,7 +35,7 @@ td{
 	<c:forEach var="obj" items="${list }">
 		<tr>
 			<td>${obj.no }</td>
-			<td>${obj.title }</td>
+			<td><a href="/notice/view/${obj.no}">${obj.title }</a> </td>
 			<td>${obj.writer }</td>
 			<td>${obj.add_date }</td>
 		</tr>

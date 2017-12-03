@@ -1,6 +1,7 @@
 package com.playgame.domain;
 
 import java.sql.Date;
+import java.util.Arrays;
 
 public class NoticeVO {
 	private String no;
@@ -8,6 +9,8 @@ public class NoticeVO {
 	private String writer;
 	private String content;
 	private Date add_date;
+	private String[] file_url;	//첨부파일(클라이언트 측에서 받아오는 파일들)
+	private String fileName;	//파일의 full url 주소값(DB에 삽입하기 위함)
 	private Integer view_count;
 	
 	public String getNo() {
@@ -40,6 +43,18 @@ public class NoticeVO {
 	public void setAdd_date(Date add_date) {
 		this.add_date = add_date;
 	}
+	public String[] getFile_url() {
+		return file_url;
+	}
+	public void setFile_url(String[] file_url) {
+		this.file_url = file_url;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 	public Integer getView_count() {
 		return view_count;
 	}
@@ -49,7 +64,8 @@ public class NoticeVO {
 	@Override
 	public String toString() {
 		return "NoticeVO [no=" + no + ", title=" + title + ", writer=" + writer + ", content=" + content + ", add_date="
-				+ add_date + ", view_count=" + view_count +"]";
+				+ add_date + ", file_url=" + Arrays.toString(file_url) + ", fileName=" + fileName + ", view_count="
+				+ view_count + "]";
 	}
 	
 }

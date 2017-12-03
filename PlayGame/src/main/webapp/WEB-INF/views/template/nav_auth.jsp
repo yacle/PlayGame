@@ -39,7 +39,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/master/notice">공지사항</a></li>
+        <li><a href="/notice/list">공지사항</a></li>
         <li><a href="#">장바구니</a></li>
         <li><a href="#">주문조회</a></li>
         <li><a href="/qna">고객센터</a></li>

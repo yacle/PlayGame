@@ -70,5 +70,9 @@
 		<beans:property value="/temp" name="uploadTempDir"/>
 		<beans:property value="utf-8" name="defaultEncoding"/>
 	</beans:bean>
+	<!-- 파일 업로드시 저장할 위치 -->
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="D:\PROJECT\playgame_upload"></beans:constructor-arg>
+	</beans:bean>
 	
 </beans:beans>
