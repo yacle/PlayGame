@@ -37,4 +37,14 @@ public class MemberServiceImpl implements MemberService{
 	public int read_id(MemberVO vo) throws Exception {
 		return dao.read_id(vo);
 	}
+
+	@Override
+	public String search_id(MemberVO vo) throws Exception {
+		return dao.search_id(vo);
+	}
+
+	@Override
+	public String search_pw(MemberVO vo) throws Exception {
+		return dao.search_pw(vo);
+	}
 }

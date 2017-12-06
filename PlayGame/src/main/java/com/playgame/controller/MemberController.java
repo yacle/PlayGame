@@ -105,13 +105,37 @@ public class MemberController {
 		mav.addObject("section", "member/search_id");
 		return mav;
 	}
+	@RequestMapping(value = "/searchId", method = RequestMethod.POST)
+	@ResponseBody
+	public String searchIdPOST(MemberVO vo)throws Exception{
+		String id = service.search_id(vo);
+		if(id!=null) {
+			return id;
+		}else {
+			return "해당하는 ID가 없습니다.";
+		}
+	}
 	// GET 패스워드 찾기
-		@RequestMapping(value = "/searchPW", method = RequestMethod.GET)
-		public ModelAndView searchPWGET()throws Exception{
+		@RequestMapping(value = "/searchPw", method = RequestMethod.GET)
+		public ModelAndView searchPwGET()throws Exception{
 			ModelAndView mav = new ModelAndView("temp");
 			mav.addObject("section", "member/search_pw");
 			return mav;
 		}
-	
+		
+		@RequestMapping(value="/searchPw", method = {RequestMethod.POST})
+		@ResponseBody
+		public void searchPwPOST(MemberVO vo) throws Exception{
+			UUID u = UUID.randomUUID();	
+			String code = u.toString().substring(0, 8);
+			vo.setPassword(code);
+			String email=service.search_pw(vo);
+			MimeMessage msg = sender.createMimeMessage();
+			msg.setRecipient(RecipientType.TO, new InternetAddress(email));
+			msg.setSubject("임시 비밀번호");
+			String text = "임시비밀번호 :"+code;
+			msg.setText(text, "UTF-8", "html");
+			sender.send(msg);
+		}
 	
 }

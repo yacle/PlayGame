@@ -11,7 +11,7 @@
 <!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-			<a href="/item/item_list/ps4">
+			<a href="/product/item_list/ps4">
 				<img src="/resources/home_image/ps4.png" alt="ps4" style="width:100%;">
 			</a>
 				<div class="carousel-caption">
@@ -21,7 +21,7 @@
 			</div>
 
 			<div class="item">
-			<a href="/item/item_list/xbox">
+			<a href="/product/item_list/xbox">
 				<img src="/resources/home_image/xbox.jpg" alt="xbox" style="width:100%;">
 			</a>
 				<div class="carousel-caption">
@@ -31,7 +31,7 @@
 			</div>
 
 			<div class="item">
-			<a href="/item/item_list/nintendo">
+			<a href="/product/item_list/nintendo">
 				<img src="/resources/home_image/nintendo.png" alt="nintendo" style="width:100%;">
 			</a>
 				<div class="carousel-caption">

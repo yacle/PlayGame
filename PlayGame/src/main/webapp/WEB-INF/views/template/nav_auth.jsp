@@ -43,6 +43,7 @@
         <li><a href="#">장바구니</a></li>
         <li><a href="#">주문조회</a></li>
         <li><a href="/qna">고객센터</a></li>
+        <li><a href="#">마이페이지</a></li>
         <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
       </ul>
     </div>

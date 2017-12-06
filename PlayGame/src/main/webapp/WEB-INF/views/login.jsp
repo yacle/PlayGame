@@ -13,7 +13,7 @@
 			<input type="password" class="form-control" name="password" placeholder="Enter password" style="width:50%">
 		</div>
 		<div align="right" style="width:50%;">
-		<a href="/member/searchId" style="color: blue">아이디 찾기</a> | <a href="/member/searchPW" style="color: blue">비밀번호 찾기</a><br/><br/>
+		<a href="/member/searchId" style="color: blue">아이디 찾기</a> | <a href="/member/searchPw" style="color: blue">비밀번호 찾기</a><br/><br/>
 		<button type="button" id="submit" class="btn btn-default">Submit</button>
 		</div>
 	</form>

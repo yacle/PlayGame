@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product">
+	<insert id="create" >
+		insert into product(
+			product_no,
+			code,
+			name,
+			company,
+			detail,
+			serial_no,
+			price,
+			in_date,
+			order_no,
+			pic01,
+			pic02,
+			pic03		
+		) 
+		values(
+			product_seq.nextval, 
+			#{code}, 
+			#{name}, 
+			#{company}, 
+			#{detail}, 
+			#{serial_no}, 
+			#{price}, 
+			#{in_date}, 
+			#{order_no, jdbcType=VARCHAR}, 
+			#{pic01, jdbcType=VARCHAR},
+			#{pic02, jdbcType=VARCHAR},
+			#{pic03, jdbcType=VARCHAR}
+		 )
+	</insert> 
+		
+	<select id="category" resultType="com.playgame.domain.ProductVO">
+		select * from product where code like ‘%’ || #{category} || ‘%’
+	</select>
+	<select id="readOne" resultType="com.playgame.domain.ProductVO">
+		select * from product where product_no = #{no}
+	</select>
+	<update id="update">
+		update product set 
+			detail=#{detail, jdbcType=VARCHAR},
+			price=#{price, jdbcType=VARCHAR},  
+			order_no=#{order_no, jdbcType=VARCHAR},
+			#{pic01, jdbcType=VARCHAR},
+			#{pic02, jdbcType=VARCHAR},
+			#{pic03, jdbcType=VARCHAR}
+		where product_no = #{no}
+	</update>
+	<delete id="delete">
+		delete from product where product_no = #{no}
+	</delete>
+	
+</mapper>

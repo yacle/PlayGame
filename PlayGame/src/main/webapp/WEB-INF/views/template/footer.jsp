@@ -7,6 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>footer</h1>
+<div class="row">
+	<div class="col-sm-4">
+		<h2>footer1</h2>
+	</div>
+	<div class="col-sm-4">
+		<h2>footer2</h2>
+	</div>
+	<div class="col-sm-4">
+		<a href="/master/manage"><button type="button">관리자 페이지</button></a>
+	</div>
+</div>
 </body>
 </html>
